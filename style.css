@@ -5,10 +5,33 @@
   --span-color :#e2bc15;
 }
 
+/* .hero, .home {
+  position: relative;
+  z-index: 1;
+} */
+
 body {
   font-size: 1.2rem;
   font-family: 'Work Sans', sans-serif;
   min-height: 1000px;
+}
+
+/* Container video */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* KUNCI UTAMA */
+  overflow: hidden;
+}
+
+/* Video */
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* biar full layar tanpa gepeng */
 }
 
 /* HERO CONTAINER */
