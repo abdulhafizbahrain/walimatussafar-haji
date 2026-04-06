@@ -36,7 +36,7 @@
       id="hero"
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
-      <video autoplay muted loop playsinline class="bg-video">
+      <video id="song" loop autoplay playisline class="bg-video">
         <source src="video/haji.mp4" type="video/mp4" />
       </video>
       <main>
@@ -55,6 +55,9 @@
           <h3>&</h3>
           <h3>L. Abdul Zulhan Hamid <span>Bin</span> H. L. Abdul Hamid</h3>
         </div>
+        <br />
+        <br />
+        <br />
         <br />
         <p>Acara akan berlansung dalam :</p>
         <div class="simply-countdown"></div>
@@ -595,9 +598,9 @@
     </footer>
 
     <div id="audio-container">
-      <audio id="song" autoplay loop>
+      <!-- <audio id="song" autoplay loop>
         <source src="audio/haji.mp3" type="audio/mp3" />
-      </audio>
+      </audio> -->
 
       <div class="audio-icon-wrapper" style="display: none">
         <i class="bi bi-disc"></i>
@@ -642,12 +645,20 @@
     </script>
 
     <script>
+      "use strict";
+
       const rootElement = document.querySelector(":root");
       const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
       const audioIcon = document.querySelector(".audio-icon-wrapper i");
       const song = document.querySelector("#song");
-      let isPlaying = false;
 
+      let isPlaying = false;
+      let scrollTop = 0;
+      let scrollLeft = 0;
+
+      /* =========================
+   DISABLE SCROLL (LOCK)
+========================= */
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -659,21 +670,50 @@
         rootElement.style.scrollBehavior = "auto";
       }
 
+      /* =========================
+   ENABLE SCROLL + UNMUTE
+========================= */
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = "smooth";
-        // localStorage.setItem('opened', 'true');
-        playAudio();
+
+        // Aktifkan suara TANPA reset video
+        if (song) {
+          song.muted = false;
+
+          if (song.paused) {
+            song.play();
+          }
+        }
       }
 
+      /* =========================
+   AUTOPLAY (MUTED)
+========================= */
       function playAudio() {
+        if (!song) return;
+
+        song.muted = true; // wajib untuk autoplay
         song.volume = 1;
+
         audioIconWrapper.style.display = "flex";
-        song.play();
-        isPlaying = true;
+
+        song
+          .play()
+          .then(() => {
+            isPlaying = true;
+          })
+          .catch(() => {
+            console.log("Autoplay diblok browser");
+          });
       }
 
+      /* =========================
+   TOGGLE PLAY / PAUSE
+========================= */
       audioIconWrapper.onclick = function () {
+        if (!song) return;
+
         if (isPlaying) {
           song.pause();
           audioIcon.classList.remove("bi-disc");
@@ -687,11 +727,15 @@
         isPlaying = !isPlaying;
       };
 
-      // if (!localStorage.getItem('opened')) {
-      //   disableScroll();
-      // }
-      disableScroll();
+      /* =========================
+   INIT SAAT LOAD
+========================= */
+      document.addEventListener("DOMContentLoaded", function () {
+        disableScroll(); // kunci scroll awal
+        playAudio(); // autoplay tanpa suara
+      });
     </script>
+
     <script>
       window.addEventListener("load", function () {
         const form = document.getElementById("my-form");
