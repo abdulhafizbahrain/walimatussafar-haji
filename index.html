@@ -1,582 +1,721 @@
-:root {
-  --pink: #d48b04;
-  --bg: #706346;
-  --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
-  --span-color :#e2bc15;
-}
-
-body {
-  font-size: 1.2rem;
-  font-family: 'Work Sans', sans-serif;
-  min-height: 1000px;
-}
-
-/* HERO CONTAINER */
-.hero {
-  position: relative;
-  width: 100%;
-  /* height: 100vh; full layar */
-  overflow: hidden;
-  min-height: 100vh;
-}
-
-/* VIDEO BACKGROUND */
-.hero .bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* biar penuh */
-  z-index: -2;
-
-  /* efek langsung ke video (lebih stabil) */
-  /* filter: grayscale(100%) brightness(0.8); */
-}
-
-/* OVERLAY (warna + efek tambahan) */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* biru langit transparan */
-  /* background: rgba(155, 221, 247, 0.3); */
-
-  /* efek blur kaca */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
-  z-index: -1;
-}
-
-/* Acrylic / Glass Effect */
-.bg-acrylic {
-  background: rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-}
-
-/* KONTEN DI ATAS */
-.hero .content {
-  position: relative;
-  z-index: 1;
-  color: white;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-
-
-/* .hero h1,
-.hero h4,
-.hero p {
-  text-shadow: var(--shadow);
-} */
-
-.hero * {
-  opacity: 0;
-  transform: translateY(30px);
-  filter: blur(10px);
-  animation: fadeUpBlur 2.5s ease forwards;
-   will-change: transform, opacity;
-}
-
-@keyframes fadeUpBlur {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-.hero h1 {
-  /* font-family: 'Sacramento', cursive; */
-  font-family: 'Calligraphy';
-  /* font-size: 6rem; */
-  font-size: clamp(2rem, 6vw, 3rem);
-}
-
-.arab-font{
-  color: var(--span-color);
-}
-
-
-
-.hero h3 {
-  /* font-family: 'Sacramento', cursive; */
-  font-family: 'Calligraphy', cursive;
-  /* font-size: 6rem; */
-  font-size: clamp(1rem, 5vw, 1.5rem);
-}
-
-.hero h3 span{
-  color: var(--span-color)
-}
-
-
-.hero h4 {
-  font-size: 1.6rem;
-}
-
-.hero p {
-  font-size: 1.4rem;
-}
-
-.hero a {
-  color: var(--pink);
-  background-color: white;
-  /* box-shadow: var(--shadow); */
-}
-
-.hero a:hover {
-  background-color: white;
-  color: var(--pink);
-}
-
-.mynavbar {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(4px);
-}
-
-.mynavbar .offcanvas {
-  height: 100vh;
-}
-
-.mynavbar .navbar-brand,
-.mynavbar .offcanvas-title {
-  font-family: 'Sacramento', cursive;
-  font-size: 3.2rem;
-  font-weight: bold;
-}
-
-.mynavbar .nav-link {
-  text-transform: uppercase;
-}
-
-.home {
-  background-image: url(img/bg.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  min-height: 100vh;
-
-  display: flex;              /* WAJIB */
-  flex-direction: column;     /* biar vertikal */
-  justify-content: center;    /* center atas-bawah */
-  /* align-items: center;        center kiri-kanan */
-  padding-bottom: 100px;
-  padding-top: 100px;
-
-}
-
-.home h2,
-.info h2,
-.story h2,
-.gallery h2,
-.rsvp h2,
-.gifts h2 {
-  color: var(--pink);
-  font-family: 'Sacramento';
-  font-size: 5rem;
-  font-weight: bold;
-}
-
-.home h3 {
-  color: #444;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.home p {
-  font-size: 1.1rem;
-  color: #666;
-}
-
-.home .couple {
-  margin-top: 10px;
-}
-
-.home .couple h3 {
-  font-family: 'Sacramento';
-  font-size: 2.4rem;
-  color: var(--pink);
-}
-
-.home .couple img {
-  width: 100%;
-}
-
-.home .heart {
-  width: 50px;
-  height: 50px;
-  background-color: white;
-  display: flex;
-  border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(65px);
-}
-
-.home .heart i {
-  margin: auto;
-  color: var(--pink);
-}
-
-.info {
-  background-color: var(--bg);
-  color: white;
-  padding-top: 10rem;
-  padding-bottom: 8rem;
-}
-
-.info .alamat {
-  font-size: 1.1rem;
-}
-
-.info .description {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-.info .card {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-  border: 1px solid #999;
-}
-
-.info .card-header {
-  border-bottom: 1px solid #999;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-}
-
-.info .card-body {
-  font-size: 1rem;
-}
-
-.info .card-footer {
-  border-top: 1px solid #999;
-  font-size: 0.9rem;
-  font-weight: 300;
-}
-
-.story,
-.gallery,
-.rsvp,
-.gifts {
-  padding-top: 10rem;
-  padding-bottom: 8rem;
-}
-
-.story span,
-.gallery span,
-.gifts span {
-  text-transform: uppercase;
-  color: #666;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.story p,
-.gallery p,
-.rsvp p,
-.gifts p {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
-.timeline {
-  list-style: none;
-  padding: 1.4rem 0;
-  margin-top: 1rem;
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  width: 1px;
-  background-color: #ccc;
-  left: 50%;
-}
-
-.timeline li {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.timeline li::before,
-.timeline li::after {
-  content: '';
-  display: table;
-}
-
-.timeline li::after {
-  clear: both;
-}
-
-.timeline li .timeline-image {
-  width: 160px;
-  height: 160px;
-  background-color: #ccc;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.timeline li .timeline-panel {
-  width: 40%;
-  float: left;
-  border: 1px solid #ccc;
-  padding: 2rem;
-  position: relative;
-  border-radius: 8px;
-  background-color: #fff;
-}
-
-.timeline li .timeline-panel::before {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  border-top: 15px solid transparent;
-  border-left: 15px solid #ccc;
-  border-right: 0 solid #ccc;
-  border-bottom: 15px solid transparent;
-  top: 80px;
-  right: -15px;
-}
-
-.timeline li .timeline-panel::after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  border-top: 14px solid transparent;
-  border-left: 14px solid #fff;
-  border-right: 0 solid #fff;
-  border-bottom: 14px solid transparent;
-  top: 81px;
-  right: -13px;
-}
-
-.timeline li.timeline-inverted .timeline-panel {
-  float: right;
-}
-
-.timeline li.timeline-inverted .timeline-panel::before {
-  border-left-width: 0;
-  border-right-width: 15px;
-  left: -15px;
-  right: auto;
-}
-
-.timeline li.timeline-inverted .timeline-panel::after {
-  border-left-width: 0;
-  border-right-width: 14px;
-  left: -13px;
-  right: auto;
-}
-
-.gallery {
-  background-color: #f5f5f5;
-}
-
-.rsvp {
-  background-color: var(--bg);
-}
-
-.rsvp h2 {
-  font-size: 4.5rem;
-}
-
-.rsvp p {
-  color: white;
-}
-
-.rsvp form label {
-  color: white;
-}
-
-.rsvp button {
-  background-color: var(--pink);
-  color: white;
-  border: 1px solid var(--pink);
-}
-
-.rsvp button:hover {
-  background-color: white;
-  color: var(--pink);
-  border: 1px solid white;
-}
-
-footer {
-  padding: 3rem;
-  background-color: var(--pink);
-  color: white;
-}
-
-footer a {
-  color: var(--bg);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
-}
-
-footer li {
-  list-style: none;
-  display: inline;
-  margin: 0.5rem;
-}
-
-.audio-icon-wrapper {
-  width: 4rem;
-  height: 4rem;
-  font-size: 4rem;
-  position: fixed;
-  bottom: 2.5rem;
-  right: 2rem;
-  cursor: pointer;
-  color: white;
-  opacity: 0.5;
-  mix-blend-mode: difference;
-  animation: rotating 4s linear infinite;
-  transform-origin: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Media Query */
-/* Extra large */
-@media (max-width: 1200px) {
-  .home .heart {
-    transform: translateX(-50%) translateY(45px);
-  }
-}
-
-/* laptop */
-@media (max-width: 992px) {
-  html {
-    font-size: 75%;
-  }
-
-  .simply-countdown > .simply-section {
-    padding: 70px;
-  }
-
-  .home .heart {
-    display: none;
-  }
-
-  .timeline::before {
-    left: 60px;
-  }
-
-  .timeline li .timeline-image {
-    left: 15px;
-    margin-left: 45px;
-    top: 16px;
-  }
-
-  .timeline li .timeline-panel {
-    width: calc((100% - 200px));
-    float: right;
-  }
-
-  .timeline li .timeline-panel::before {
-    border-left-width: 0;
-    border-right-width: 15px;
-    left: -15px;
-    right: auto;
-  }
-
-  .timeline li .timeline-panel::after {
-    border-left-width: 0;
-    border-right-width: 14px;
-    left: -13px;
-    right: auto;
-  }
-}
-
-/* tablet */
-@media (max-width: 768px) {
-  html {
-    font-size: 65%;
-  }
-
-  .simply-countdown > .simply-section {
-    padding: 60px;
-    margin: 5px;
-  }
-
-  .mynavbar .nav-link {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .sticky-top {
-    overflow: hidden;
-  }
-
-  .timeline li .timeline-image {
-    width: 140px;
-    height: 140px;
-  }
-}
-
-/* mobile phone */
-@media (max-width: 576px) {
-  html {
-    font-size: 60%;
-  }
-
-  .simply-countdown > .simply-section {
-    padding: 45px;
-    margin: 3px;
-  }
-
-  .timeline li .timeline-image {
-    width: 80px;
-    height: 80px;
-  }
-
-  .timeline li .timeline-panel {
-    width: 65%;
-    transform: translateX(-20px);
-  }
-
-  .timeline li .timeline-panel::before {
-    top: 30px;
-  }
-
-  .timeline li .timeline-panel::after {
-    top: 31px;
-  }
-}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Undangan Walimatussafar Haji</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:wght@100;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- simplyCountdown -->
+    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
+    <script src="countdown/simplyCountdown.min.js"></script>
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <section
+      id="hero"
+      class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
+    >
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="video/haji.mp4" type="video/mp4" />
+      </video>
+      <main>
+        <h4>UNDANGAN</h4>
+        <div class="bg-acrylic rounded-5 p-4">
+          <h1>WALIMATUSSAFAR HAJI</h1>
+          <h1 class="arab-font">
+            لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيْكَ لَكَ
+            لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ لاَ
+            شَرِيْكَ لَكَ
+          </h1>
+        </div>
+        <br />
+        <div class="bg-acrylic rounded-5 p-4">
+          <h3>Baiq Unjiani <span>Binti</span> H. L. Srigede</h3>
+          <h3>&</h3>
+          <h3>L. Abdul Zulhan Hamid <span>Bin</span> H. L. Abdul Hamid</h3>
+        </div>
+        <br />
+        <p>Acara akan berlansung dalam :</p>
+        <div class="simply-countdown"></div>
+        <a
+          href="#home"
+          class="btn btn-lg mt-4 rounded-5 bg-acrylic"
+          onClick="enableScroll()"
+          >Lihat Undangan</a
+        >
+      </main>
+    </section>
+
+    <!-- <nav class="navbar navbar-expand-md bg-transparent sticky-top mynavbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Dino</a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Dino</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="#home">Home</a>
+              <a class="nav-link" href="#info">Info</a>
+              <a class="nav-link" href="#story">Story</a>
+              <a class="nav-link" href="#gallery">Gallery</a>
+              <a class="nav-link" href="#rsvp">RSVP</a>
+              <a class="nav-link" href="#gifts">Gifts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+
+    <section id="home" class="home">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <h2>Walimatussafar Haji</h2>
+            <h3>
+              Diselenggarakan pada Rabu 15 April 2026 di Rumah Kami
+              <br />
+              (Jl. Praya-Mantang Km. 6, Mertak Tombok, Praya)
+            </h3>
+            <p>
+              Dengan penuh rasa syukur dan kerendahan hati, kami mengundang
+              Bapak/Ibu/Saudara/i untuk berkenan hadir serta mendoakan
+              kelancaran keberangkatan haji kami dalam acara syukuran yang kami
+              selenggarakan.
+              <br />
+              Mohon doa restu dan mohon maaf atas segala kesalahan. Semoga kami
+              diberikan kelancaran, kesehatan dan menjadi Haji Mabrur.
+              <br />
+              Aamiin Yaa Robbal Alamin
+            </p>
+          </div>
+        </div>
+
+        <div class="row couple">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-8 text-end">
+                <br />
+                <h3 class="fw-bolder">
+                  Baiq Unjiani <br /><span class="fw-light">Binti</span><br />
+                  H. L. Srigede
+                </h3>
+              </div>
+              <div class="col-4">
+                <img
+                  src="img/baiq.jpg"
+                  alt="Sandhika Galih"
+                  class="img-responsive rounded-circle"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- <span class="heart"><i class="bi bi-heart-fill"></i></span> -->
+
+          <div class="col-lg-6 mt-lg-0 mt-5">
+            <div class="row">
+              <div class="col-4">
+                <img
+                  src="img/lalu.jpg"
+                  alt="Nofariza"
+                  class="img-responsive rounded-circle"
+                />
+              </div>
+              <div class="col-8">
+                <br />
+                <h3 class="fw-bolder">
+                  L. Abdul Zulhan Hamid <br /><span class="fw-light">Bin</span
+                  ><br />
+                  H. L. Abdul Hamid
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="info" class="info">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Informasi Acara</h2>
+            <p class="alamat">
+              Alamat: Jl. Praya-Mantang Km. 6, Mertak Tombok, Praya
+            </p>
+
+            <iframe
+              class="rounded-5"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d464.18431232923655!2d116.28540924481875!3d-8.665917584536228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdb143b430cb01%3A0x79623cd6c897999!2sGedeng%20Lalu%20Zulhan!5e1!3m2!1sen!2sid!4v1775493383899!5m2!1sen!2sid"
+              width="100%"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+
+            <a
+              href="https://maps.app.goo.gl/oRn2Mpr9Fqwjx9yx5"
+              target="_blank"
+              class="btn btn-light btn-sm my-3"
+              >Klik untuk membuka peta</a
+            >
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+          <div class="col-md-5 col-10">
+            <div class="card text-center text-bg-light mb-5">
+              <div class="card-header">Jadwal Acara</div>
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <i class="bi bi-clock d-block"></i>
+                    <span>11.00 - 13.00 WITA</span>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="bi bi-calendar3 d-block"></i>
+                    <span>Rabu, 15 April 2026</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                Kami ucapkan terima kasih atas kehadiran Bapak/Ibu/Saudara/i.
+                Semoga senantiasa diberikan keselamatan dan kelancaran dalam
+                perjalanan hingga tiba di tempat acara.
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-5 col-10">
+            <div class="card text-center text-bg-light">
+              <div class="card-header">Resepsi</div>
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <i class="bi bi-clock d-block"></i>
+                    <span>11.00 - selesai</span>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="bi bi-calendar3 d-block"></i>
+                    <span>Rabu, 20 November 2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                Saat acara akad diharapkan untuk kondusif menjaga kekhidmatan
+                dan kekhusyuan seluruh prosesi.
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="story" class="story">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <span>Bagaimana Cinta Kami Bersemi</span>
+            <h2>Cerita Kami</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro,
+              similique non soluta nulla asperiores voluptatem.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <ul class="timeline">
+              <li>
+                <div
+                  class="timeline-image"
+                  style="background-image: url(img/sman23.jpg)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Pertama Bertemu</h3>
+                    <span>1 Juni 2000</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quos, modi autem? Commodi autem quo quia?
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div
+                  class="timeline-image"
+                  style="background-image: url(https://picsum.photos/300/300)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Mulai Serius</h3>
+                    <span>1 Januari 2005</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto enim eaque obcaecati odit itaque explicabo
+                      quisquam quos at.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="timeline-image"
+                  style="background-image: url(https://picsum.photos/301/301)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Tunangan</h3>
+                    <span>7 November 2009</span>
+                  </div>
+                  <div class="timeline-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eveniet, deleniti distinctio. Esse quas sit explicabo
+                    corporis magni qui expedita a.
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <span>Memori Kisah Kami</span>
+            <h2>Galeri Foto</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+              itaque?
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 justify-content-center"
+        >
+          <div class="col mt-3">
+            <a
+              href="img/gallery/1.png"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 1"
+              data-gallery="mygallery"
+            >
+              <img
+                src="img/gallery/thumbnail/1.png"
+                alt="Sandhika & Nofa 1"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a
+              href="https://picsum.photos/id/300/1200/768"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 2"
+              data-gallery="mygallery"
+            >
+              <img
+                src="https://picsum.photos/id/300/300/400"
+                alt="Sandhika & Nofa 2"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a
+              href="https://picsum.photos/id/301/1200/768"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 3"
+              data-gallery="mygallery"
+            >
+              <img
+                src="https://picsum.photos/id/301/300/400"
+                alt="Sandhika & Nofa 3"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a
+              href="https://picsum.photos/id/302/1200/768"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 4"
+              data-gallery="mygallery"
+            >
+              <img
+                src="https://picsum.photos/id/302/300/400"
+                alt="Sandhika & Nofa 4"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a
+              href="https://picsum.photos/id/304/1200/768"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 5"
+              data-gallery="mygallery"
+            >
+              <img
+                src="https://picsum.photos/id/304/300/400"
+                alt="Sandhika & Nofa 5"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+          <div class="col mt-3">
+            <a
+              href="https://picsum.photos/id/305/1200/768"
+              data-toggle="lightbox"
+              data-caption="Sandhika & Nofa 6"
+              data-gallery="mygallery"
+            >
+              <img
+                src="https://picsum.photos/id/305/300/400"
+                alt="Sandhika & Nofa 6"
+                class="img-fluid w-100 rounded"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rsvp">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Konfirmasi Kehadiran</h2>
+            <p>Isi form di bawah ini untuk melakukan konfirmasi kehadiran.</p>
+          </div>
+        </div>
+
+        <form
+          class="row row-cols-md-auto g-3 align-items-center justify-content-center"
+          method="POST"
+          action="https://script.google.com/macros/s/AKfycbyddFbEJRqwEeA6OmZAuNf0jw_B30ZUOS5qSDwlAKV_nurcW7H6osJx2ZWnIeTmPm_35g/exec"
+          id="my-form"
+        >
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="nama" name="nama" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="jumlah" class="form-label">Jumlah</label>
+              <input
+                type="number"
+                class="form-control"
+                id="jumlah"
+                name="jumlah"
+                min="1"
+                max="5"
+                length="1"
+                value="1"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="status" class="form-label">Konfirmasi</label>
+              <select name="status" id="status" class="form-select">
+                <option selected>Pilih salah satu</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12" style="margin-top: 35px">
+            <button class="btn btn-primary">Kirim</button>
+          </div>
+        </form>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6">
+            <div id="disqus_thread"></div>
+            <script>
+              /**
+               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+              var disqus_config = function () {
+                this.page.url = "https://sandhikagalih.me"; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "https://sandhikagalih.me"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+              };
+
+              (function () {
+                // DON'T EDIT BELOW THIS LINE
+                var d = document,
+                  s = d.createElement("script");
+                s.src = "https://dino-wedding-1.disqus.com/embed.js";
+                s.setAttribute("data-timestamp", +new Date());
+                (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript
+              >Please enable JavaScript to view the
+              <a href="https://disqus.com/?ref_noscript"
+                >comments powered by Disqus.</a
+              ></noscript
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gifts" class="gifts">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <span>ungkapan tanda kasih</span>
+            <h2>Kirim Hadiah</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+              iure perferendis provident ab aliquam nemo.
+            </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="fw-bold">BCA</div>
+                123456789 - SANDHIKA GALIH
+              </li>
+              <li class="list-group-item">
+                <div class="fw-bold">MANDIRI</div>
+                987654321 - SANDHIKA GALIH
+              </li>
+              <li class="list-group-item">
+                <div class="fw-bold">Saweria</div>
+                <img
+                  src="img/saweria.png"
+                  alt="Saweria QR"
+                  class="img-thumbnail"
+                  width="150"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <small class="block"
+              >&copy; 2026 MINIVOCM HARDSOFT DEV. All Rights Reserved.</small
+            >
+            <small class="block"
+              >Design by
+              <a href="https://instagram.com/abdulhafizbahrain"
+                >@abdulhafizbahrain</a
+              ></small
+            >
+
+            <ul class="mt-3">
+              <li>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="bi bi-tiktok"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source src="audio/haji.mp3" type="audio/mp3" />
+      </audio>
+
+      <div class="audio-icon-wrapper" style="display: none">
+        <i class="bi bi-disc"></i>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+
+    <script>
+      simplyCountdown(".simply-countdown", {
+        year: 2026, // required
+        month: 4, // required
+        day: 15, // required
+        hours: 8, // Default is 0 [0-23] integer
+        words: {
+          //words displayed into the countdown
+          days: { singular: "hari", plural: "hari" },
+          hours: { singular: "jam", plural: "jam" },
+          minutes: { singular: "menit", plural: "menit" },
+          seconds: { singular: "detik", plural: "detik" },
+        },
+      });
+    </script>
+
+    <script>
+      const stickyTop = document.querySelector(".sticky-top");
+      const offcanvas = document.querySelector(".offcanvas");
+
+      offcanvas.addEventListener("show.bs.offcanvas", function () {
+        stickyTop.style.overflow = "visible";
+      });
+
+      offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+        stickyTop.style.overflow = "hidden";
+      });
+    </script>
+
+    <script>
+      const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
+      const audioIcon = document.querySelector(".audio-icon-wrapper i");
+      const song = document.querySelector("#song");
+      let isPlaying = false;
+
+      function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        window.onscroll = function () {
+          window.scrollTo(scrollTop, scrollLeft);
+        };
+
+        rootElement.style.scrollBehavior = "auto";
+      }
+
+      function enableScroll() {
+        window.onscroll = function () {};
+        rootElement.style.scrollBehavior = "smooth";
+        // localStorage.setItem('opened', 'true');
+        playAudio();
+      }
+
+      function playAudio() {
+        song.volume = 1;
+        audioIconWrapper.style.display = "flex";
+        song.play();
+        isPlaying = true;
+      }
+
+      audioIconWrapper.onclick = function () {
+        if (isPlaying) {
+          song.pause();
+          audioIcon.classList.remove("bi-disc");
+          audioIcon.classList.add("bi-pause-circle");
+        } else {
+          song.play();
+          audioIcon.classList.add("bi-disc");
+          audioIcon.classList.remove("bi-pause-circle");
+        }
+
+        isPlaying = !isPlaying;
+      };
+
+      // if (!localStorage.getItem('opened')) {
+      //   disableScroll();
+      // }
+      disableScroll();
+    </script>
+    <script>
+      window.addEventListener("load", function () {
+        const form = document.getElementById("my-form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const action = e.target.action;
+          fetch(action, {
+            method: "POST",
+            body: data,
+          }).then(() => {
+            alert("Konfirmasi kehadiran berhasil terkirim!");
+          });
+        });
+      });
+    </script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get("n") || "";
+      const pronoun = urlParams.get("p") || "Bapak/Ibu/Saudara/i";
+      const namaContainer = document.querySelector(".hero h4 span");
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ",");
+
+      document.querySelector("#nama").value = nama;
+    </script>
+  </body>
+</html>
