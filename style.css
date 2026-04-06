@@ -47,8 +47,8 @@ body {
   /* background: rgba(155, 221, 247, 0.3); */
 
   /* efek blur kaca */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
+  /* -webkit-backdrop-filter: blur(4px); */
 
   z-index: -1;
 }
