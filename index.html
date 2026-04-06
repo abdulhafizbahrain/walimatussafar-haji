@@ -36,12 +36,11 @@
       id="hero"
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
-      <video muted autoplay loop class="bg-video">
-        <source src="video/haji.mp4" type="video/mp4" />
-      </video>
-      <audio id="song" autoplay playisline loop>
-        <source src="audio/haji.mp3" type="audio/mp3" />
-      </audio>
+      <div class="video-bg">
+        <video id="song" autoplay muted loop playsinline webkit-playsinline>
+          <source src="video/haji.mp4" type="video/mp4" />
+        </video>
+      </div>
       <main>
         <h4>UNDANGAN</h4>
         <div class="bg-acrylic rounded-5 p-4">
