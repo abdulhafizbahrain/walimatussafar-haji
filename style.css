@@ -160,13 +160,19 @@ body {
 
 .home {
   background-image: url(img/bg.png);
-  background-size: cover; /* WAJIB ganti ini */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   min-height: 100vh;
-  padding-top: 10rem;
-  padding-bottom: 5rem;
+
+  display: flex;              /* WAJIB */
+  flex-direction: column;     /* biar vertikal */
+  justify-content: center;    /* center atas-bawah */
+  /* align-items: center;        center kiri-kanan */
+  padding-bottom: 100px;
+  padding-top: 40px;
+
 }
 
 .home h2,
